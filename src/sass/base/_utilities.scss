@@ -1,0 +1,51 @@
+@use "include" as *;
+
+.btn {
+  cursor: pointer;
+  $padding: 1.3rem;
+  padding: calc($padding / 1.4) $padding;
+  border: 1px rgba(#808080, 0.2) solid;
+  border-radius: calc($padding * 1.7);
+
+  &.btn-primary {
+    background-color: $light;
+  }
+  &.btn-secondary {
+    background-color: $lighter;
+  }
+  &.btn-outline,
+  &.btn-ghost {
+    border: 1px rgba(#808080, 0.4) solid;
+    background-color: rgba($color: #000000, $alpha: 0);
+  }
+  &.btn-ghost {
+    font-weight: 300;
+  }
+
+  will-change: transform;
+  transition: transform 0.2s ease;
+
+  &:hover:not(:disabled) {
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.section {
+  margin-top: $separation;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.center-content {
+  width: min(120rem, 90%);
+  margin: 0 auto;
+}

@@ -1,0 +1,7 @@
+@use "variables" as *;
+
+@mixin roundify($padding: 1.3rem) {
+  padding: calc($padding / 1.4) $padding;
+  border: 1px rgba(#808080, 0.2) solid;
+  border-radius: calc($padding * 1.7);
+}

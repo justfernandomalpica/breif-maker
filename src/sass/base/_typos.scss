@@ -1,0 +1,43 @@
+@use "include" as *;
+
+h1 {
+  font-size: $headin-size;
+  font-weight: 900;
+}
+h2 {
+  font-size: calc($headin-size * 0.9);
+  font-weight: 800;
+}
+h3 {
+  font-size: calc($headin-size * 0.83);
+  font-weight: 800;
+}
+h4 {
+  font-size: calc($headin-size * 0.76);
+  font-weight: 700;
+}
+h5 {
+  font-size: calc($headin-size * 0.69);
+  font-weight: 700;
+}
+h6 {
+  font-size: calc($headin-size * 0.62);
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: $base-tb-margin 0;
+}
+
+p {
+  font-size: $base-size;
+}
+
+mark {
+  background-color: $dark;
+}

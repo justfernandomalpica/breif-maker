@@ -1,6 +1,7 @@
 /config/.env
 /vendor/
 /node_modules/
+sandbox.html
 
 /.idea/
 /.vscode/

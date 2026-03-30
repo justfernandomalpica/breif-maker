@@ -1,0 +1,79 @@
+@use "include" as *;
+
+.form {
+  width: min(80rem, 100%);
+  margin: 0 auto;
+
+  fieldset {
+    width: auto;
+    border: none;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+
+    small {
+      width: auto;
+      margin-left: auto;
+    }
+    margin-bottom: 1rem;
+  }
+
+  input,
+  textarea,
+  select {
+    @include roundify();
+    padding-left: 2rem;
+    padding-right: 2rem;
+    overflow: hidden;
+
+    &.success {
+      background-color: $success;
+    }
+    &.error {
+      background-color: $error;
+    }
+    &.info {
+      background-color: $info;
+    }
+    &.warning {
+      background-color: $warning;
+    }
+  }
+
+  input {
+    background-color: $soft-light;
+    border-color: $light;
+    outline: none;
+
+    will-change: border-color;
+    transition: border-color $transition-time ease;
+    &:focus-visible {
+      border-color: $darker;
+    }
+  }
+
+  textarea {
+    overflow-y: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    list-style: none;
+    resize: none;
+    outline: none;
+    &:focus-visible {
+      border-color: $darker;
+    }
+  }
+
+  select {
+    background-color: $soft-light;
+  }
+
+  .button-group {
+    width: fit-content;
+    margin-left: auto;
+  }
+}

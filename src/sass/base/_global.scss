@@ -1,0 +1,58 @@
+@use "include" as *;
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: $base-font;
+  font-size: 18px;
+  line-height: 1.2;
+  color: $base-font-color;
+  background-color: #fff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: $base-font-color;
+  font-weight: $base-font-weight;
+  &:not(.btn) {
+    font-style: italic;
+    text-decoration: 1px #000 underline dotted;
+  }
+  text-decoration: none;
+  will-change: font-weight;
+  transition: font-weight $transition-time ease;
+
+  &:hover:not(.btn) {
+    font-weight: 600;
+  }
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  background-color: #e0e0e0;
+  outline: none;
+  border: none;
+  text-wrap: unset;
+}
+
+textarea {
+  scrollbar-arrow-color: rgba(#000, 0);
+  scrollbar-color: $darker rgba(#000, 0);
+}
