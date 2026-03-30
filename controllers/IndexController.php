@@ -18,4 +18,15 @@ class IndexController {
         $view->data(["title"=>"Pagina principal", "content"=>"2","Dato"=>"Algun dato cualquiera"]);
         $this->rEngine->render("master", $view);
     }
+
+    public function post() {
+        debug("post");
+    }
+    public function login() {
+        debug("login");
+    }
+    public function auth() {
+        debug("auth");
+    }
+    
 }

@@ -1,1 +1,4 @@
-<h1>Hola Mundo desde la vista MainPage</h1>
+<div>
+    <h1>Breif</h1>
+    <a href="/form">Iniciar Formulario</a>
+</div>
