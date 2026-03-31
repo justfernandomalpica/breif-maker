@@ -38,7 +38,7 @@ class Router {
     private function execute(Route $route, array $params) : void {
         if(!empty($route->middlewares())) {
             foreach($route->middlewares() as $middleware){
-                call_user_func($middleware, $params);
+                call_user_func([$middleware, "run"], $params);
             }
         }
         call_user_func($route->handler(), $params);

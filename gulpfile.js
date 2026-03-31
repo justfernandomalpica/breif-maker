@@ -1,6 +1,7 @@
 import { dest, src, series, parallel, watch } from "gulp";
 import * as dartSass from "sass";
 import gulpSass from "gulp-sass";
+import sourcemaps from "gulp-sourcemaps";
 import * as esbuild from "esbuild";
 
 const sass = gulpSass(dartSass);
@@ -25,11 +26,13 @@ const paths = {
 
 function buildStyles(isProduction) {
   return src(paths.styles.entry)
+    .pipe(sourcemaps.init())
     .pipe(
       sass({
         style: isProduction ? "compressed" : "expanded", // "compressed" or "expanded"
       }).on("error", sass.logError),
     )
+    .pipe(sourcemaps.write())
     .pipe(dest(paths.styles.dest));
 }
 

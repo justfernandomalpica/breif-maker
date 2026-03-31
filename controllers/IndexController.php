@@ -13,19 +13,20 @@ class IndexController {
         $this->rEngine = $rEngine;
     }
 
-    public function index(){
-        $view = new View("public/mainpage");
-        $view->data(["title"=>"Pagina principal", "content"=>"2","Dato"=>"Algun dato cualquiera"]);
-        $this->rEngine->render("master", $view);
+    public function index() : void {
+        $view = new View("public/loginForm");
+        $this->rEngine->render("master",$view);
     }
 
-    public function post() {
+    public function post() : void {
         debug("post");
     }
-    public function login() {
+
+    public function login() :void {
         debug("login");
     }
-    public function auth() {
+
+    public function auth() : void {
         debug("auth");
     }
     

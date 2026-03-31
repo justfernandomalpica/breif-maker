@@ -8,16 +8,17 @@ use Gabrola\EmailNormalizer\EmailRules;
 
 class User extends ActiveRecord {
     protected static string $table = 'users';
-    protected static array $columns = ['id', 'name','email','password','role','token','isConfirmed'];
-    protected static array $columnsToSync = ['name', 'email', 'password', 'role'];
-    protected array $roles = ['admin', 'user'];
+    protected static array $columns = ['id', 'name','email','password','role','status','created_at','updated_at'];
+    protected static array $columnsToSync = ['name', 'email', 'password', 'role', 'status'];
+    protected array $roles = ['user', 'admin', 'superadmin'];
 
     public string $name = '';
     public string $email = '';
     public string $password = '';
     public string $role = '';
-    public ?string $token = null;
-    public int $isConfirmed = 0;
+    public int $status = 0;
+    public string $created_at = '';
+    public string $updated_at = '';
 
     public function name(string $name) : self {
         $errHead = "Nombre";
@@ -80,18 +81,6 @@ class User extends ActiveRecord {
         return $this;
     }
 
-    public function isConfirmed(bool $isConfirmed = true) : self {
-        $this->isConfirmed = $isConfirmed ? 1 : 0;
-        return $this;
-    }
-
-    public function token() : self {
-        $token = uniqid((string) rand(), true);
-        if(strlen($token) < 30) throw new \Error("Bad token generated in User Model");
-        $this->token = $token;
-        return $this;
-    }
-
     public function validate() {
         if($this->name === '') $this->setError('Campo vacío', "El nombre no puede ir vacío");
         if($this->email === '') $this->setError('Campo vacío', "El correo es obligatorio");
@@ -103,6 +92,17 @@ class User extends ActiveRecord {
         if(trim($password) === '') return false;
         $result = password_verify($password, $this->password);
         return $result;
+    }
+
+    public function save(): static|bool {
+        $date = date('Y-m-d H:i:s');
+
+        if(is_null($this->id)) {
+            $this->created_at = $date;
+            $this->updated_at = $date;
+        } else $this->updated_at = $date;
+
+        return parent::save();
     }
 
     private function normalizeEmail(string $email) : string {

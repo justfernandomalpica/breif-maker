@@ -1,0 +1,81 @@
+@use "include" as *;
+
+.identify {
+  &-container {
+    $tb-margin: 1rem;
+
+    @include center-content;
+    // height: min(110rem, calc(100% - calc($tb-margin * 4)));
+    margin-top: calc($tb-margin + 1vh);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30rem auto;
+
+    // Papersheet
+    // border: 2px black solid;
+
+    // overflow: hidden;
+  }
+
+  &-header {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .papersheet {
+      $triangle-size: 4rem;
+      $triangle-rotate: 180deg;
+
+      width: fit-content;
+      border: 1px #000 solid;
+      padding: 2.25rem 5rem;
+
+      border-top-right-radius: $triangle-size;
+      corner-top-right-shape: bevel;
+
+      position: relative;
+
+      &::after,
+      &:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 0;
+        right: 0;
+        border-style: solid;
+        border-width: $triangle-size 0px 0px $triangle-size;
+        border-color: #fff transparent transparent transparent;
+        transform: rotate($triangle-rotate);
+      }
+
+      &::before {
+        border-color: #000000 transparent transparent transparent;
+        z-index: -1;
+        transform: rotate($triangle-rotate) scale(1.02);
+      }
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp($headin-size, 50vw, calc($base-size * 6));
+      text-align: center;
+    }
+
+    .text {
+      text-align: center;
+    }
+  }
+
+  &-form {
+    height: fit-content;
+    margin: auto auto;
+    padding: 2rem;
+
+    & input[type="submit"] {
+      width: fit-content;
+      margin-left: auto;
+    }
+  }
+}

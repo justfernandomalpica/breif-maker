@@ -49,10 +49,18 @@
     border-color: $light;
     outline: none;
 
-    will-change: border-color;
-    transition: border-color $transition-time ease;
-    &:focus-visible {
-      border-color: $darker;
+    &[type="text"],
+    &[type="email"] {
+      padding: 1rem 2.5rem;
+    }
+    & :not([types="input"]) {
+      width: 85%;
+
+      will-change: border-color;
+      transition: border-color $transition-time ease;
+      &:focus-visible {
+        border-color: $darker;
+      }
     }
   }
 

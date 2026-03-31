@@ -5,3 +5,8 @@
   border: 1px rgba(#808080, 0.2) solid;
   border-radius: calc($padding * 1.7);
 }
+
+@mixin center-content {
+  width: min(120rem, 90%);
+  margin: 0 auto;
+}
