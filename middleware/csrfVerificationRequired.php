@@ -10,6 +10,8 @@ class csrfVerificationRequired {
         start_session();
         
         if(!isset($_SESSION["csrf_token"])) self::redirectIfIsNotValid();
+        if(!isset($_POST["_csrf"])) self::redirectIfIsNotValid();
+        
         $token = $_POST["_csrf"];
         $isValid = csrfToken::validate($token);
         if(!$isValid) self::redirectIfIsNotValid();

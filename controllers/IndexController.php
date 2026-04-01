@@ -54,7 +54,6 @@ class IndexController {
     }
 
     private function validateString(string $input) : bool | string {
-        if(!is_string($input)) return false;
         $input = trim($input);
         if($input === '') return false;
         return $input;

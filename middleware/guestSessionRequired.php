@@ -2,6 +2,8 @@
 
 namespace Middleware;
 
+use Core\Alerts\AlertManager;
+
 class guestSessionRequired {
 
     public static function run() : void {
@@ -12,8 +14,8 @@ class guestSessionRequired {
     }
 
     private static function block() {
-        http_response_code(401);
-        // header('Location: /');
+        AlertManager::error("Algio salió mal :(", "Es necesario identificarse");
+        header("Location: /");
         exit;
     }
 }

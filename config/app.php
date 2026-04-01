@@ -36,5 +36,7 @@ $formController = new FormController($rEngine);
 
 // Comenzar con sesión de invitado:
 start_session();
-$_SESSION['user_role'] = 'guest';
-$_SESSION['sid'] = ''; // Se inicia sin un id de sesión indicando que el usuario no esta identificado
+if(!isset($_SESSION['user_role']) && !isset($_SESSION['sid'])){
+    $_SESSION['user_role'] = 'guest';
+    $_SESSION['sid'] = ''; // Se inicia sin un id de sesión indicando que el usuario no esta identificado
+}
