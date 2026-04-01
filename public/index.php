@@ -1,6 +1,7 @@
 <?php
 
 use Middleware\adminRequired;
+use Middleware\csrfVerificationRequired;
 use Middleware\guestSessionRequired;
 use Middleware\superAdminRequired;
 
@@ -11,7 +12,9 @@ $router->get("/healthcheck", [$coreController, "healthz"])->name("healthz");
 
 // Public
 $router->get("/", [$indexController, "index"])->name("index");
-$router->post("/identify", [$indexController,"post"])->name("identify.post");
+$router->post("/identify", [$indexController,"post"])
+    ->name("identify.post")
+    ->middleware(csrfVerificationRequired::class);
 $router->get("/login", [$indexController, "login"])->name("login");
 $router->post("/login", [$indexController,"auth"])->name("login.post");
 

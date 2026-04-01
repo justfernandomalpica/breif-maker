@@ -33,3 +33,8 @@ $adminController = new AdminController($rEngine);
 $indexController = new IndexController($rEngine);
 $coreController = new CoreController($rEngine);
 $formController = new FormController($rEngine);
+
+// Comenzar con sesión de invitado:
+start_session();
+$_SESSION['user_role'] = 'guest';
+$_SESSION['sid'] = ''; // Se inicia sin un id de sesión indicando que el usuario no esta identificado
